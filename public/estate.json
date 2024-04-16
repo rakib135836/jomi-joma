@@ -1,0 +1,50 @@
+[
+    {
+        "image": "https://i.ibb.co/vqGykmD/family-house.jpg",
+        "estate_title": "Cozy Family Home",
+        "id": 1,
+        "segment_name": "Single-family homes",
+        "description": "A charming single-family home perfect for small families or couples.",
+        "price": "$300,000",
+        "status": "sale",
+        "area": "1500 sq ft",
+        "location": "City Center",
+        "facilities": ["living room", "kitchen", "backyard"]
+    },
+    {
+        "image": "https://i.ibb.co/ZTNrZ5F/town-house.jpg",
+        "estate_title": "Modern Townhouse",
+        "id": 2,
+        "segment_name": "Townhouses",
+        "description": "A stylish townhouse with contemporary design and amenities.",
+        "price": "$400,000",
+        "status": "sale",
+        "area": "2000 sq ft",
+        "location": "Suburbs",
+        "facilities": ["living room", "kitchen", "garage"]
+    },
+    {
+        "image": "https://i.ibb.co/m8SG6QC/apartment.jpg",
+        "estate_title": "Luxury Apartment",
+        "id": 3,
+        "segment_name": "Apartments",
+        "description": "An upscale apartment with breathtaking views and top-notch facilities.",
+        "price": "$2,500/month",
+        "status": "rent",
+        "area": "1000 sq ft",
+        "location": "Downtown",
+        "facilities": ["swimming pool", "gym", "parking"]
+    },
+    {
+        "image": "https://i.ibb.co/jbmYnmq/student-housing.jpg",
+        "estate_title": "Student Housing Complex",
+        "id": 4,
+        "segment_name": "Student housing",
+        "description": "Modern student housing with convenient amenities and study areas.",
+        "price": "$800/month",
+        "status": "rent",
+        "area": "500 sq ft",
+        "location": "Near University Campus",
+        "facilities": ["study room", "fitness center", "game lounge"]
+    }
+]
