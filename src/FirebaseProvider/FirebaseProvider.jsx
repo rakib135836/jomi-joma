@@ -1,10 +1,11 @@
+import { createContext } from "react";
 
-
-const FirebaseProvider = () => {
+export const FirebaseContext=createContext(null);
+const FirebaseProvider = ({children}) => {
     return (
-        <div>
-            
-        </div>
+        <FirebaseContext.Provider>
+            {children}
+        </FirebaseContext.Provider>
     );
 };
 
