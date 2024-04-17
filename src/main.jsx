@@ -9,22 +9,36 @@ import {
 } from "react-router-dom";
 import Root from './layout/Root';
 import Home from './pages/Home/Home';
+import { HelmetProvider } from 'react-helmet-async';
+import ErrorPage from './pages/ErrorPage/ErrorPage';
+import FirebaseProvider from './FirebaseProvider/FirebaseProvider';
+import Login from './pages/Login/Login';
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Root></Root>,
+    errorElement:<ErrorPage></ErrorPage>,
     children:[
       {
         path:"/",
         element:<Home></Home>,
       },
+      {
+        path:"/login",
+        element:<Login></Login>
+      }
     ]
   },
 ]);
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <HelmetProvider>
+   
+   <RouterProvider router={router} />
+   
+    </HelmetProvider>
+    
   </React.StrictMode>,
 )

@@ -1,4 +1,5 @@
 import { NavLink } from "react-router-dom";
+import { Link } from 'react-router-dom';
 
 
 const NavBar = () => {
@@ -9,7 +10,7 @@ const NavBar = () => {
         <li><NavLink to={'/update-profile'}>Update Profile</NavLink></li>
         <li><NavLink to={'/my-profile'}>My profile</NavLink></li>
         <li><NavLink to={'/estate-details'}>Estate Details</NavLink></li>
-       
+
 
     </>
 
@@ -37,9 +38,15 @@ const NavBar = () => {
                 </ul>
             </div>
             <div className="navbar-end flex gap-3">
-                <a className="btn bg-green-400 text-white">Sign In</a>
-                <a className="btn bg-blue-400 text-white">Sign Up</a>
+
+                <div className="w-10 rounded-full">
+                    <img className="rounded" alt="profile image " src="https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg" />
+                </div>
+                  <Link to="/login"><a className="btn bg-green-400 text-white">Sign In</a></Link>
+                <a className="btn bg-green-400 text-white">regrister</a>
+
             </div>
+            
         </div>
     );
 };
