@@ -1,8 +1,18 @@
+import { useContext } from "react";
 import { NavLink } from "react-router-dom";
 import { Link } from 'react-router-dom';
+import { FirebaseContext } from "../../FirebaseProvider/FirebaseProvider";
 
 
 const NavBar = () => {
+
+    const {user,logOut}=useContext(FirebaseContext);
+
+    const handleSignOUt=()=>{
+            logOut()
+            .then()
+            .catch()
+    }
 
     const links = <>
 
@@ -42,11 +52,16 @@ const NavBar = () => {
                 <div className="w-10 rounded-full">
                     <img className="rounded" alt="profile image " src="https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg" />
                 </div>
-                  <Link to="/login"><a className="btn bg-green-400 text-white">Sign In</a></Link>
-                <a className="btn bg-green-400 text-white">regrister</a>
+                {
+                    user?
+                    <button onClick={handleSignOUt} className="btn">Sign out </button>:
+                    <Link to="/login" className="btn bg-green-400 text-white">Sign In</Link>
+                }
+                <a href="#" className="btn bg-green-400 text-white">Register</a>
+
 
             </div>
-            
+
         </div>
     );
 };
