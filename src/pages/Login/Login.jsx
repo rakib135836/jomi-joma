@@ -28,8 +28,15 @@ const Login = () => {
                         </div>
                     </form>
                 </div>
+
+                
                 <p className="text-center">OR</p>
+
+
+
                 <div>
+
+
                     <button className="btn">
                         <FaGoogle />
                         login with google

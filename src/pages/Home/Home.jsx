@@ -1,6 +1,7 @@
-// import PropertyCard from "../../components/PropertyCard/PropertyCard";
+
 import { Helmet } from "react-helmet-async";
 import Slider from "../../components/Slider/Slider";
+import Properties from "../../components/Properties/Properties";
 
 
 const Home = () => {
@@ -12,7 +13,7 @@ const Home = () => {
             <h1>this is Home</h1>
 
             <Slider></Slider>
-            {/* <PropertyCard></PropertyCard> */}
+           <Properties></Properties>
         </div>
     );
 };
