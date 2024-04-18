@@ -1,28 +1,59 @@
 
-import React, { useContext } from 'react';
+import { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { FirebaseContext } from '../../FirebaseProvider/FirebaseProvider';
 
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { FaEyeSlash,FaEye } from 'react-icons/fa6';
+
 const Register = () => {
+
+    const notify = () => toast("Registration successful");
+
+
+    const [showPassword, setShowPassword] = useState(false);
+    const [registerError, setRegisterError] = useState('');
+    const [registerSuccess, setRegisterSuccess] = useState('');
     const { createUser } = useContext(FirebaseContext);
+
 
     const handleRegister = (e) => {
         e.preventDefault();
         console.log(e.currentTarget);
         const form = new FormData(e.currentTarget);
-        const email = form.get('email'); 
+        const email = form.get('email');
         const password = form.get('password');
         const Photo = form.get('Photo');
         const Name = form.get('Name')
         console.log(email, password, Photo, Name)
 
+        if (password.length < 6) {
+            setRegisterError('password should be at least 6 characters or longer');
+            return
+        }
+        else if (!/^(?=.*[a-z])(?=.*[A-Z]).+$/.test(password)) {
+            setRegisterError('your password must have a lowercase and a uppercase letter');
+            return
+        }
+
+        // reset error
+        setRegisterError('');
+        setRegisterSuccess('');
+
         // Create user 
         createUser(email, password)
             .then(result => {
                 console.log(result.user);
+                setRegisterSuccess('Register successfull');
+                notify('Registration successful')
+
+
             })
             .catch(error => {
+
                 console.error(error);
+                setRegisterError(error.message)
             });
     };
 
@@ -56,14 +87,35 @@ const Register = () => {
                             <label className="label">
                                 <span className="label-text">Password</span>
                             </label>
-                            <input type="password" name="password" placeholder="password" className="input input-bordered" required />
+                            <input type={showPassword ? "text" : "password"}
+                                name="password"
+                                placeholder="password"
+                                className="input input-bordered"
+                                required />
+
+                            <span onClick={() => setShowPassword(!showPassword)}>
+
+                                {
+                                    showPassword?<FaEye></FaEye>:<FaEyeSlash></FaEyeSlash>
+                                }
+
+                            </span>
+
                         </div>
                         <div className="form-control mt-6">
                             <button type="submit" className="btn btn-primary">Register</button>
                         </div>
                     </form>
+                    {
+                        registerError && <p className='text-red-400'> {registerError}</p>
+                    }
+                    {
+                        registerSuccess && <p className='text-green-400'>{registerSuccess}</p>
+                    }
                 </div>
                 <p>Already have an account? Please <Link className="text-red-400" to={'/login'}>Login</Link></p>
+                <ToastContainer />
+
             </div>
         </div>
     );

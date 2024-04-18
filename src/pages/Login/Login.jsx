@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { FaGoogle, FaGithub } from "react-icons/fa6";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { FirebaseContext } from "../../FirebaseProvider/FirebaseProvider";
@@ -8,10 +8,12 @@ import { GithubAuthProvider } from "firebase/auth";
 
 const Login = () => {
 
-    const { signIn, googleSignIn,githubSignIn } = useContext(FirebaseContext);
+    const [loginError, setLoginError] = useState('');
+
+    const { signIn, googleSignIn, githubSignIn } = useContext(FirebaseContext);
 
 
-    
+
 
 
 
@@ -20,15 +22,16 @@ const Login = () => {
 
         const provider = new GoogleAuthProvider();
         googleSignIn(provider)
-        .then(result=>{
-            const loggedInUser=result.user;
-            console.log(loggedInUser);
-            
-        })
-        .catch(error=>{
-            console.error('error hoiche',error);
-          
-        })
+            .then(result => {
+                const loggedInUser = result.user;
+                console.log(loggedInUser);
+
+            })
+            .catch(error => {
+                console.error('error hoiche', error);
+               
+
+            })
     }
 
     const handleGithubSignIn = () => {
@@ -43,7 +46,7 @@ const Login = () => {
                 console.error('github error', error);
             });
     };
-    
+
 
 
     const location = useLocation();
@@ -58,6 +61,12 @@ const Login = () => {
         const email = form.get('email');
         const password = form.get('password')
         console.log(email, password)
+
+
+         // reset error
+
+         setLoginError('');
+
         signIn(email, password)
             .then(result => {
                 console.log(result.user)
@@ -68,6 +77,7 @@ const Login = () => {
             })
             .catch(error => {
                 console.error(error)
+                setLoginError('invalid email or password');
             })
     }
 
@@ -120,14 +130,20 @@ const Login = () => {
                         log in with git hub
                     </button>
 
+                    {
+                        loginError && <p className="text-red-500"> {loginError}</p>
+                    }
+
                 </div>
+
 
                 <p>Dont have an account? Please <Link className="text-red-300" to={"/regerister"}> Register</Link></p>
             </div>
+
 
         </div>
     );
 };
 
-export default Login;   
+export default Login;
 

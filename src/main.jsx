@@ -18,6 +18,8 @@ import FirebaseProvider from './FirebaseProvider/FirebaseProvider';
 import PropertyDetails from './pages/PropertyDetails/PropertyDetails';
 import PrivateRoutes from './PrivateRoutes/PrivateRoutes';
 import MyProfile from './pages/MyProfile/MyProfile';
+import Plans from './pages/Plans/Plans';
+import { HelmetProvider } from 'react-helmet-async';
 
 const router = createBrowserRouter([
   {
@@ -45,6 +47,10 @@ const router = createBrowserRouter([
       {
         path:"/my-profile",
         element:<MyProfile></MyProfile>,
+      },
+      {
+        path:"/plans",
+        element:<PrivateRoutes><Plans></Plans></PrivateRoutes>,
       }
       
     ]
@@ -55,12 +61,14 @@ ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
    
    
-   <FirebaseProvider>
+  <HelmetProvider>
+  <FirebaseProvider>
    
    <RouterProvider router={router} />
      
   
    </FirebaseProvider>
+  </HelmetProvider>
  
     
   </React.StrictMode>,
