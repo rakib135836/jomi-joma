@@ -32,14 +32,14 @@ const PropertyDetails = () => {
       
 
       <div className="card  card-side bg-base-100 shadow-xl">
-        <figure><img src={property?.image} alt="Movie" /></figure>
+        <figure><img src={property?.image} alt="" /></figure>
         <div className="card-body">
 
           <h2 className="card-title">{property?.estate_title}</h2>
           <p>segment : {property?.segment_name}</p> <br /> <hr />
-          <p className="font-bold">{property?.price}</p>
+          <p className="font-bold"> price:{property?.price}</p>
 
-          <span className="font-bold"> review</span> <p>{property?.description}</p>
+          <span className="font-bold"> </span> <p>{property?.description}</p>
 
           <div className="flex flex-row ">
             <p className="font-bold">Tags</p>
@@ -50,15 +50,15 @@ const PropertyDetails = () => {
           <table>
             <tbody>
               <tr>
-                <td>Number of pages:</td>
+                <td>area:</td>
                 <td className="font-bold">{property?.area}</td>
               </tr>
               <tr>
-                <td>Publisher:</td>
+                <td>location:</td>
                 <td className="font-bold">{property?.location}</td>
               </tr>
               <tr>
-                <td>Year of publish:</td>
+                <td></td>
                 <td className="font-bold">{property?.location}</td>
               </tr>
             </tbody>
