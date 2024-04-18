@@ -17,6 +17,7 @@ import Regerister from './pages/Regerister/Regerister';
 import FirebaseProvider from './FirebaseProvider/FirebaseProvider';
 import PropertyDetails from './pages/PropertyDetails/PropertyDetails';
 import PrivateRoutes from './PrivateRoutes/PrivateRoutes';
+import MyProfile from './pages/MyProfile/MyProfile';
 
 const router = createBrowserRouter([
   {
@@ -37,9 +38,13 @@ const router = createBrowserRouter([
         element:<Regerister></Regerister>,
       },
       {
-        path:"/property/:id",
+        path:"/property/:uid",
         element:<PrivateRoutes><PropertyDetails></PropertyDetails></PrivateRoutes>,
         loader: () => fetch('/estate.json')
+      },
+      {
+        path:"/my-profile",
+        element:<MyProfile></MyProfile>,
       }
       
     ]

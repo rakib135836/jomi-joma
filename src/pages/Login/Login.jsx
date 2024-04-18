@@ -1,36 +1,74 @@
-
 import { useContext } from "react";
 import { FaGoogle, FaGithub } from "react-icons/fa6";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { FirebaseContext } from "../../FirebaseProvider/FirebaseProvider";
+import { GoogleAuthProvider } from "firebase/auth";
+import { GithubAuthProvider } from "firebase/auth";
 
 
 const Login = () => {
 
-    const {signIn}=useContext(FirebaseContext);
-    const location=useLocation();
-    const navigate=useNavigate();
-    console.log('location in the login page ',  location);
+    const { signIn, googleSignIn,githubSignIn } = useContext(FirebaseContext);
+
+
+    
+
+
+
+
+    const handleGoogleSignIn = () => {
+
+        const provider = new GoogleAuthProvider();
+        googleSignIn(provider)
+        .then(result=>{
+            const loggedInUser=result.user;
+            console.log(loggedInUser);
+            
+        })
+        .catch(error=>{
+            console.error('error hoiche',error);
+          
+        })
+    }
+
+    const handleGithubSignIn = () => {
+
+        const githubProvider = new GithubAuthProvider();
+        githubSignIn(githubProvider)
+            .then(result => {
+                const loggedInUser = result.user;
+                console.log(loggedInUser);
+            })
+            .catch(error => {
+                console.error('github error', error);
+            });
+    };
+    
+
+
+    const location = useLocation();
+    const navigate = useNavigate();
+    console.log('location in the login page ', location);
 
 
     const handleLogin = e => {
         e.preventDefault();
         console.log(e.currentTarget);
         const form = new FormData(e.currentTarget);
-        const email=form.get('email');
-        const password=form.get('password')
-        console.log(email,password)
-        signIn(email,password)
-        .then(result=>{
-            console.log(result.user)
+        const email = form.get('email');
+        const password = form.get('password')
+        console.log(email, password)
+        signIn(email, password)
+            .then(result => {
+                console.log(result.user)
 
-            // nevigate after login 
+                // nevigate after login 
 
-            navigate(location?.state?location.state:'/')
-        })
-        .catch(error=>{
-            console.error(error)
-        })
+                navigate(location?.state ? location.state : '/')
+            })
+            .catch(error => {
+                console.error(error)
+            })
     }
 
 
@@ -72,12 +110,12 @@ const Login = () => {
                 <div>
 
 
-                    <button className="btn">
+                    <button onClick={handleGoogleSignIn} className="btn">
                         <FaGoogle />
                         login with google
                     </button>
 
-                    <button className="btn">
+                    <button onClick={handleGithubSignIn} className="btn">
                         <FaGithub />
                         log in with git hub
                     </button>
@@ -91,4 +129,5 @@ const Login = () => {
     );
 };
 
-export default Login;
+export default Login;   
+

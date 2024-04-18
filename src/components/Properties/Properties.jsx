@@ -13,7 +13,10 @@ const Properties = () => {
     }, [])
     return (
         <div>
-            <h1 className="text-2xl font-bold text-center ">Estate</h1>
+            <div>
+            <h1 className="text-3xl font-bold text-center my-2 ">Estate</h1>
+            <p className="text-center">Find your dream place</p>
+            </div>
 
 
             <div className="grid  grid-cols-1 lg:grid-cols-4 md:grid-cols-2">
