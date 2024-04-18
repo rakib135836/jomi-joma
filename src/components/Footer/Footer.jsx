@@ -1,11 +1,11 @@
-
+import { MapContainer, TileLayer, useMap } from 'react-leaflet'
 
 const Footer = () => {
     return (
         <footer className="footer p-10 bg-neutral text-neutral-content">
             <aside>
-            <h1 className="font-bold text-black text-3xl">Jomi <span className="text-orange-400">joma</span></h1>
-                <p>JOMI JOMA Ltd.<br /> Your Trusted Real Estate Partner Since 1992</p>
+            <h1 className="font-bold text-black text-3xl ">Jomi <span className="text-orange-400">joma</span></h1>
+                <p className="animate__animated animate__backInLeft">JOMI JOMA Ltd.<br /> Your Trusted Real Estate Partner Since 1992</p>
             </aside>
             <nav>
                 <h6 className="footer-title">Social</h6>

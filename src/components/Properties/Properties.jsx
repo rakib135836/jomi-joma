@@ -14,7 +14,7 @@ const Properties = () => {
     return (
         <div>
             <div>
-            <h1 className="text-3xl font-bold text-center my-2 ">Estate</h1>
+            <h1 className="text-3xl font-bold text-center my-2 animate__animated animate__flash ">Estate</h1>
             <p className="text-center">Find your dream place</p>
             </div>
 

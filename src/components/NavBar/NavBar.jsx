@@ -2,6 +2,7 @@ import { useContext } from "react";
 import { NavLink } from "react-router-dom";
 import { Link } from 'react-router-dom';
 import { FirebaseContext } from "../../FirebaseProvider/FirebaseProvider";
+import 'animate.css';
 
 
 const NavBar = () => {
@@ -39,7 +40,7 @@ const NavBar = () => {
 
                         </ul>
                     </div>
-                    <h1 className="font-bold text-black text-3xl">Jomi <span className="text-orange-400">joma</span></h1>
+                    <h1 className="font-bold text-black text-3xl animate__animated animate__flash">Jomi <span className="text-orange-400">joma</span></h1>
                 </div>
                 <div className="navbar-center hidden lg:flex">
                     <ul className="menu menu-horizontal px-1">
@@ -51,8 +52,16 @@ const NavBar = () => {
                 <div className="navbar-end flex gap-3">
 
                     <div className="w-10 rounded-full">
-                        <img className="rounded" alt="profile image " src="https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg" />
+                        {user ? (
+                            <span title={user.displayName || "Anonymous"}>
+                                <img className="rounded" alt="profile image" src={user.photoURL || "https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg"} />
+                            </span>
+                        ) : (
+                            <img className="rounded" alt="existing image" src="https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg" />
+                        )}
                     </div>
+
+
                     {
                         user ?
                             <button onClick={handleSignOUt} className="btn">Sign out </button> :

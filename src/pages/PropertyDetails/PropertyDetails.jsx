@@ -1,5 +1,8 @@
 import { useEffect, useState } from "react";
+
+import { addedProperties } from "../../utility/localStorage";
 import { useLoaderData, useParams } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 
 
 const PropertyDetails = () => {
@@ -18,9 +21,15 @@ const PropertyDetails = () => {
   console.log(property)
 
 
-  //   addedProperties(idInt)
+ 
+    addedProperties(idInt);
+
   return (
     <div>
+<Helmet>
+  <title>PropertyDetails</title>
+</Helmet>
+      
 
       <div className="card  card-side bg-base-100 shadow-xl">
         <figure><img src={property?.image} alt="Movie" /></figure>

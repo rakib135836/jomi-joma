@@ -21,6 +21,7 @@ import MyProfile from './pages/MyProfile/MyProfile';
 import Plans from './pages/Plans/Plans';
 import { HelmetProvider } from 'react-helmet-async';
 
+
 const router = createBrowserRouter([
   {
     path: "/",
@@ -40,7 +41,7 @@ const router = createBrowserRouter([
         element:<Regerister></Regerister>,
       },
       {
-        path:"/property/:uid",
+        path:"/property/:id",
         element:<PrivateRoutes><PropertyDetails></PropertyDetails></PrivateRoutes>,
         loader: () => fetch('/estate.json')
       },
@@ -63,13 +64,13 @@ ReactDOM.createRoot(document.getElementById('root')).render(
    
   <HelmetProvider>
   <FirebaseProvider>
-   
+
    <RouterProvider router={router} />
      
-  
+   
    </FirebaseProvider>
-  </HelmetProvider>
- 
+  
+   </HelmetProvider>
     
   </React.StrictMode>,
 )
