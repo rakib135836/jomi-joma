@@ -20,6 +20,7 @@ import PrivateRoutes from './PrivateRoutes/PrivateRoutes';
 import MyProfile from './pages/MyProfile/MyProfile';
 import Plans from './pages/Plans/Plans';
 import { HelmetProvider } from 'react-helmet-async';
+import UpdateProfile from './pages/UpdateProfile/UpdateProfile';
 
 
 const router = createBrowserRouter([
@@ -47,11 +48,15 @@ const router = createBrowserRouter([
       },
       {
         path:"/my-profile",
-        element:<MyProfile></MyProfile>,
+        element:<PrivateRoutes><MyProfile></MyProfile></PrivateRoutes>,
       },
       {
         path:"/plans",
         element:<PrivateRoutes><Plans></Plans></PrivateRoutes>,
+      },
+      {
+        path:"/update-profile",
+        element:<PrivateRoutes><UpdateProfile></UpdateProfile></PrivateRoutes>,
       }
       
     ]
