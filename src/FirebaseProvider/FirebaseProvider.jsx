@@ -43,6 +43,7 @@ const FirebaseProvider = ({ children }) => {
         user,
         createUser,
         signIn,
+        loading,
         logOut
     }
     return (

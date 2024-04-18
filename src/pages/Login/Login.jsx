@@ -1,13 +1,16 @@
 
 import { useContext } from "react";
 import { FaGoogle, FaGithub } from "react-icons/fa6";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { FirebaseContext } from "../../FirebaseProvider/FirebaseProvider";
 
 
 const Login = () => {
 
     const {signIn}=useContext(FirebaseContext);
+    const location=useLocation();
+    const navigate=useNavigate();
+    console.log('location in the login page ',  location);
 
 
     const handleLogin = e => {
@@ -20,6 +23,10 @@ const Login = () => {
         signIn(email,password)
         .then(result=>{
             console.log(result.user)
+
+            // nevigate after login 
+
+            navigate(location?.state?location.state:'/')
         })
         .catch(error=>{
             console.error(error)
