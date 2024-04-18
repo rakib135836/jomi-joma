@@ -15,6 +15,8 @@ import ErrorPage from './pages/ErrorPage/ErrorPage';
 import Login from './pages/Login/Login';
 import Regerister from './pages/Regerister/Regerister';
 import FirebaseProvider from './FirebaseProvider/FirebaseProvider';
+import PropertyDetails from './pages/PropertyDetails/PropertyDetails';
+import PrivateRoutes from './PrivateRoutes/PrivateRoutes';
 
 const router = createBrowserRouter([
   {
@@ -33,7 +35,13 @@ const router = createBrowserRouter([
       {
         path:"/regerister",
         element:<Regerister></Regerister>,
+      },
+      {
+        path:"/property/:id",
+        element:<PrivateRoutes><PropertyDetails></PropertyDetails></PrivateRoutes>,
+        loader: () => fetch('/estate.json')
       }
+      
     ]
   },
 ]);

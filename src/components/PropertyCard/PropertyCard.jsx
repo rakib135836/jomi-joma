@@ -1,9 +1,10 @@
 import { FaStar } from 'react-icons/fa';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
 const PropertyCard = ({ property }) => {
 
-    const { segment_name, image, area, status, price, location } = property;
+    const { segment_name, image, area, status, price, location,id } = property;
 
     return (
         <div className='flex flex-col p-5 border border-gray-400 border-solid  rounded-lg
@@ -30,7 +31,7 @@ const PropertyCard = ({ property }) => {
             </div>
 
             <div className="form-control mt-6">
-                <button className="btn btn-primary">view property</button>
+                <Link to={`/property/${id}`}><button className="btn btn-primary">view property</button></Link>
             </div>
 
         </div>
